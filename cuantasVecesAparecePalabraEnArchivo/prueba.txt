@@ -1,0 +1,4 @@
+The Python programming language is an open-source, versatile language. 
+Many developers choose Python because Python is easy to learn and Python has a massive ecosystem. 
+If you want to count words, Python makes it incredibly simple. 
+
