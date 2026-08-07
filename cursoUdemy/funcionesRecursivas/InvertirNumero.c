@@ -24,10 +24,22 @@ int main(){
 }
 
 char* invertir(int num){
-	char* numString = (char*)malloc(12*sizeof(char));
+	char* invertido = (char*)malloc(12*sizeof(char));
+	if(invertido == NULL) return "";
+	char temporal[12];
+	int longitud = snprintf(temporal, sizeof(temporal), "%d", num);
 
-	if (numString != NULL) {
-		snprintf(numString, 12, "%d", num);
+	int inicio = 0;
+	int j = 0;
+	if (num < 0) {
+		invertido[0] = '-';
+		inicio = 1;
+		j = 1;
 	}
-	return numString;
+
+	for(int i = longitud - 1; i >= inicio; i-- ){
+		invertido[j++] = temporal[i];
+	}
+		invertido[j] = '\0';
+	return invertido;
 }
