@@ -1,0 +1,17 @@
+# 1. Ignorar absolutamente todo en el repositorio
+/*
+!/**/
+
+# 2. Permitir carpetas (para que Git pueda navegar la estructura de directorios)
+!*/
+
+# 3. Excepciones: Solo rastrear archivos con las extensiones deseadas
+!*.c
+!*.h
+!*.md
+!*.txt
+!*.csv
+
+# 4. Archivos especiales de Git que siempre se deben incluir
+!.gitignore
+!.gitattributes
