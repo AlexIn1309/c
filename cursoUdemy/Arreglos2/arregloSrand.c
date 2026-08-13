@@ -22,17 +22,17 @@ int main(){
 	for (int i = 0; i < CANTIDAD; i++) {
 		numero[i] = rand() % + (1000+1);
 	}
-	puts("Pares:\n");
+	puts("\nPares:\n");
 	for (int i = 0;i<CANTIDAD;i++) {
 		if (numero[i]%2==0) {
-			printf("%d\n", numero[i]);
+			printf("%d ", numero[i]);
 		}
 	}
 
-	puts("Impares:\n");
+	puts("\nImpares:\n");
 	for (int i = 0;i<CANTIDAD;i++) {
 		if (numero[i]%2 != 0) {
-			printf("%d\n", numero[i]);
+			printf("%d ", numero[i]);
 		}
 	}
 	
