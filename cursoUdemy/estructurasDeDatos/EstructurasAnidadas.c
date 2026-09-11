@@ -64,3 +64,4 @@ static void printEmpleado(struct empleado miEmpleado){
 	printf("Salario %.4f\n", miEmpleado.salario);
 	printf("Direccion %s\n", miEmpleado.dirEmpleado.direccion);
 }
+
