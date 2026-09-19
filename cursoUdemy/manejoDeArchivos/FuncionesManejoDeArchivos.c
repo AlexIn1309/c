@@ -1,50 +1,57 @@
-/* ===================================================================================================================
+/* ===================================================================
  * FUNCIONES DE MANEJO DE ARCHIVOS EN C (Moderno, Seguro y Didáctico)
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------
  * Análisis de la Tabla de Funciones
- * -------------------------------------------------------------------------------------------------------------------
+ * ---------------------------------------------------------------------
  *  FUNCIÓN     |    ESTADO     | DIAGNÓSTICO / USO MODERNO RECOMENDADO
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  *  fopen()     | Vigente       | Usar siempre comprobando si devuelve NULL. 
  * 		|		| En C11 se introdujo fopen_s() como
  *              |               | alternativa segura opcional, pero fopen() 
  *		|		| sigue siendo el estándar universal.
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  *  fclose()    | Vigente       | Obligatorio para liberar descriptores de 
  *		|		| archivo y asegurar el volcado del buffer
  *              |               | en disco.
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  *  fgets()     | Vigente       | La mejor opción para leer texto. Reemplazó
  *		|		| por completo a gets(). Debe verificarse que
  *              |               | el retorno no sea NULL.
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  *  fputs()     | Vigente       | Eficiente y segura para escribir cadenas 
  *		|		| sencillas sin formato.
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  *  fseek()     | Con reservas  | Útil en archivos pequeños/medianos. 
  *		|		| Para archivos grandes (>2GB) en 64-bits
  *              |               | se prefiere fgetpos()/fsetpos() o fseeko()
  *		|		| para evitar desbordamiento.
- * -------------------------------------------------------------------------------------------------------------------
+ * -------------------------------------------------------------------------
  *  fprintf()   | Vigente       | Estándar universal para salida con formato
  *		|		| en flujos de archivo.
- * -------------------------------------------------------------------------------------------------------------------
- *  fscanf()    | Precaución    | Insegura con cadenas (%s) si no se acota el ancho (ej. %29s).
- *              |               | Es más seguro combinar fgets() con sscanf().
- * -------------------------------------------------------------------------------------------------------------------
- *  feof()      | Uso incorrecto| NO usar como condición de control en bucles (while(!feof)).
- *              |               | Solo se evalúa DESPUÉS de que una lectura falla para comprobar EOF.
- * -------------------------------------------------------------------------------------------------------------------
- *  ferror()    | Vigente       | Esencial para detectar si ocurrieron errores de lectura/escritura en el flujo.
- * -------------------------------------------------------------------------------------------------------------------
- *  rewind()    | Con reservas  | Equivale a fseek(fp, 0, SEEK_SET), pero no retorna errores ni limpia banderas.
+ * --------------------------------------------------------------------
+ *  fscanf()    | Precaución    | Insegura con cadenas (%s) si no se 
+ *		|		| acota el ancho (ej. %29s). Es más
+ *              |               | seguro combinar fgets() con sscanf().
+ * --------------------------------------------------------------------
+ *  feof()      | Uso incorrecto| NO usar como condición de control en 
+ *		|		| bucles (while(!feof)). Solo se evalúa
+ *              |               | Solo se evalúa DESPUÉS de que una 
+ *		|		| lectura falla para comprobar EOF.
+ * --------------------------------------------------------------------
+ *  ferror()    | Vigente       | Esencial para detectar si ocurrieron 
+ *		|		| errores de lectura/escritura en el flujo.
+ * ------------------------------------------------------------------------
+ *  rewind()    | Con reservas  | Equivale a fseek(fp, 0, SEEK_SET), 
+ *		|		| pero no retorna errores ni limpia banderas.
  *              |               | Se prefiere el uso directo de fseek().
- * -------------------------------------------------------------------------------------------------------------------
+ * -----------------------------------------------------------------------
  *  remove()    | Vigente       | Elimina un archivo del sistema de archivos.
- * -------------------------------------------------------------------------------------------------------------------
- *  fflush()    | Uso delimitado| VÁLIDO ÚNICAMENTE para flujos de SALIDA (stdout, archivos en escritura).
- *              |               | Usarlo en flujos de entrada (stdin) produce comportamiento indefinido.
- * =================================================================================================================== */
+ * -------------------------------------------------------------------------
+ *  fflush()    | Uso delimitado| VÁLIDO ÚNICAMENTE para flujos de SALIDA 
+ *		|		| (stdout, archivos en escritura). Usarlo
+ *              |               | en flujos de entrada (stdin) produce 
+ *		|		| comportamiento indefinido.
+ * ========================================================================= */
 
 
 #include <stdio.h>
@@ -106,7 +113,7 @@ void demo_lectura_y_posicionamiento(void){
 		perror("Error al abrir config.txt");
 		return;
 	}
-	
+
 	/* fseek: Mover el puntero al final para calcular el tamaño  */
 	if(fseek(fp, 0, SEEK_END) == 0){
 		long tamano = ftell(fp);
